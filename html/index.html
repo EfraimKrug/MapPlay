@@ -25,6 +25,29 @@
   <body>
     <div id="map"></div>
     <script>
+    $arr = array(
+    				'gardner' =>
+    						array('center' =>
+    								array('lat' => 42.338, 'lng' => -71.09),
+    								'population' => 2
+    						),
+    				'parsons' =>
+    						array('center' =>
+    								array('lat' => 42.337, 'lng' => -71.115),
+    								'population' => 5
+    						),
+    				'kenmore' =>
+    						array('center' =>
+    								array('lat' => 42.349, 'lng' => -71.096),
+    								'population' => 3
+    						),
+    				'childrens' =>
+    						array('center' =>
+    								array('lat' => 42.337, 'lng' => -71.105),
+    								'population' => 1
+    						),
+    			);
+
       function initMap() {
         var customMapType = new google.maps.StyledMapType([
             {
@@ -56,6 +79,7 @@
           }
         });
 
+        citymap = arr;
         for (var city in citymap) {
           // Add the circles to the map.
           var cityCircle = new google.maps.Circle({
@@ -77,7 +101,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLl-vbXZLqO4GmccEeN4ZoJufCsbXkx9M&callback=initMap">
     </script>
-
+<!--
     <script>
       $(document).ready(function(){
                 $.ajax({url: "../php/getStuff.php",
@@ -89,7 +113,7 @@
                 }});
 
         });
-
+-->
     </script>
   </body>
 </html>
