@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+ this is a free key - only good for 1 year
+ heads up in July 2017!
+ api key  MapBrowserKey: AIzaSyBLl-vbXZLqO4GmccEeN4ZoJufCsbXkx9M
+-->
+<html>
+  <head>
+    <title>Impressive?</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        background-color: black;
+        height: 100%;
+        margin: 20;
+        padding: 20;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+    $arr = array(
+    				'gardner' =>
+    						array('center' =>
+    								array('lat' => 42.338, 'lng' => -71.09),
+    								'population' => 2
+    						),
+    				'parsons' =>
+    						array('center' =>
+    								array('lat' => 42.337, 'lng' => -71.115),
+    								'population' => 5
+    						),
+    				'kenmore' =>
+    						array('center' =>
+    								array('lat' => 42.349, 'lng' => -71.096),
+    								'population' => 3
+    						),
+    				'childrens' =>
+    						array('center' =>
+    								array('lat' => 42.337, 'lng' => -71.105),
+    								'population' => 1
+    						),
+    			);
+
+      function initMap() {
+        var customMapType = new google.maps.StyledMapType([
+            {
+              stylers: [
+                {hue: '#00FF00'},
+                {visibility: 'simplified'},
+                {gamma: 0.5},
+                {weight: 0.5}
+              ]
+            },
+            {
+              elementType: 'labels',
+              stylers: [{visibility: 'on'}]
+            },
+            {
+              featureType: 'water',
+              stylers: [{color: '#0000FF'}]
+            }
+          ], {
+            name: 'Custom Style'
+        });
+        var customMapTypeId = 'custom_style';
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: {lat: 42.337, lng: -71.105},  // Children's Hospital.
+          mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', customMapTypeId]
+          }
+        });
+
+        citymap = arr;
+        for (var city in citymap) {
+          // Add the circles to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 5,
+            fillColor: '#FFFFFF',
+            fillOpacity: 0.35,
+            map: map,
+            center: citymap[city].center,
+            radius: Math.sqrt(citymap[city].population) * 100
+          });
+        }
+        map.mapTypes.set(customMapTypeId, customMapType);
+        map.setMapTypeId(customMapTypeId);
+      }
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLl-vbXZLqO4GmccEeN4ZoJufCsbXkx9M&callback=initMap">
+    </script>
+<!--
+    <script>
+      $(document).ready(function(){
+                $.ajax({url: "../php/getStuff.php",
+
+                success: function(result){
+                    //alert(result);
+                    citymap = result;
+                    //alert(citymap);
+                }});
+
+        });
+-->
+    </script>
+  </body>
+</html>
