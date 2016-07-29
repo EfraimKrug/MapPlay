@@ -4,31 +4,47 @@
 -->
 <html>
   <head>
-    <title>Impressive?</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/mapping.js"></script>
-    <meta charset="utf-8">
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-    </style>
+    <title>Impressive?</title>
   </head>
   <body>
-  <div id="map"></div>
+  <style>
+    body {
+        padding: 87px;
+        margin: 87px;
+    }
+    #Left {
+        postition: absolute;
+        padding: 17px;
+        left: 300px;
+        top: 150px;
+        width: 150px;
+        height: 50px;
+        border: 4px solid black;
+        background-color: green;
+    }
+    #Right {
+        position: absolute;
+        padding: 17px;
+        left: 400px;
+        top: 175px;
+        width: 150px;
+        height: 50px;
+        border: 4px solid black;
+        background-color: green;
+    }
 
+  </style>
+    <div id=Left>Map Page</div>
+    <div id=Right>Enter Data</div>
+    <script>
+      $("#Left").click(function(){
+          window.location.href = "map.html";
+        });
+        $("#Right").click(function(){
+            window.location.href = "form.html";
+          });
 
-<!--
-  Cloned from googleapis
--->
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLl-vbXZLqO4GmccEeN4ZoJufCsbXkx9M&callback=doItAll">
-</script>
-</body>
+    </script>
+  </body>
 </html>
